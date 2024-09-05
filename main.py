@@ -14,25 +14,28 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#                1.Функция с параметрами по умолчанию:
+#          Создаem функцию print_params(a = 1, b = 'строка', c = True),
+#          которая принимает три параметра со значениями по умолчанию
+def print_params(a=1,b='строка',c=True):
+    print(a,b,c)
 
-     # module_3_2.py
-     # Тема"Способы вызова функции"
-     # создаём функцию send_email
-def send_email(message,recipient,sender = "university.help@gmail.com"):
-    if("@"and(".com"or".ru"or".net")) not in (recipient or sender) or("@" or(".com"or"ru"or".net")) not in (recipient or sender):
-        #   1 условие
-        print("Невозможно отправить письмо с адреса {sender}на адрес {recipient}")
-    elif recipient == sender:
-        #   2 условие
-        print("Нельзя отправить письмо самому себе!")
-        #   3 условие
-    elif sender == "university.help@gmail.com":
-        print("Письмо успешно отправлено с адреса{sender} на адрес {recipient}.")
-        #   4 условие
-    elif sender !="university.help@gmail.com":
-        print("Нестандартный отправитель! Письмо отправлено с адреса {sender} на адрес {recipient}.")
-        #  результат:
-send_email('Добрый день , Вас ждет новый урок! ','alexandr.gmail.com','university.help@gmail.com')
-send_email('Добрый день,зайдите в личный кабинет','university.help@mail.com','university.help@mail.com')
-send_email('Вы успешно выполнили задание! ','alexandr.@gmail.com','university.help@gmail.com')
-send_email('Вас ждет вебинар!','alexandr.@gmail.com','univer.help@gmail.com')
+#     Вызовaem функцию print_params с разным количеством аргументов, включая вызов без аргументов.
+print_params()
+print_params(a=55,b=5,c=4)
+
+print_params('n',True,1)
+print_params(11,'sms',[12,'mode',True])
+print_params(b=25)
+print_params(c = [1,2,3])
+#               2.Распаковка параметров:
+values_list = [ 25,'Moskau',True]  #Создаем список values_list с тремя элементами разных типов
+values_dict = {'a' : 45 ,'b' :'Бит','c':False} #Создаём словарь values_dict с тремя ключами, соответствующими
+                                               # параметрам функции print_params, и значениями разных типов
+#Передаём values_list и values_dict в функцию print_params, используя распаковку параметров
+# (* для списка и ** для словаря).
+print_params(*values_list)
+print_params(**values_dict)
+#             3.Распаковка + отдельные параметры:
+values_list_2 = [10,'Navigator']
+print_params(*values_list_2, 42)
